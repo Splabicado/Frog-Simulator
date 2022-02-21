@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main
+{
+    //main method
+    public static void main(String[] args) 
+    {
+        // user input instantiation
+        Scanner scan = new Scanner(System.in);
+        String in1;
+        String in2;
+        String in3;
+        
+        //user input prompts
+        System.out.println("Welcome to frog simulator! The frog has a place to go which is a set distance away, then it has a limited amount of hops it can take to get there. The frog can jump in any distance from -10 to 10.");
+        System.out.println();
+        
+        System.out.println("Please enter the amount of allowed hops.");
+        in1 = scan.nextLine();
+        
+        System.out.println("Please enter the distance to the goal.");
+        in2 = scan.nextLine();
+        
+        System.out.println("How many simulations would you like to run?");
+        in3 = scan.nextLine();
+        
+        // user input confirmation
+        int maxHops = Integer.parseInt(in1);
+        System.out.println("Maximum amount of hops is: " + maxHops);
+        int goalDistance = Integer.parseInt(in2);
+        System.out.println("Goal distance is: " + goalDistance);
+        int simulations = Integer.parseInt(in3);
+        System.out.println("Amount of simulations running: " + simulations);
+        System.out.println();
+        
+        //run code
+        int count = 0;
+        FrogSim Joe = new FrogSim(maxHops, goalDistance);
+        for (int i = 0; i<simulations; i++)
+        {
+            if (Joe.simulate())
+            {
+                count++;
+            }
+            System.out.println();
+        }
+        System.out.println("The frog was successful in " + count + " out of " + simulations + " simulations.");
+    }
+}
