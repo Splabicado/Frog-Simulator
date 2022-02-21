@@ -1,0 +1,43 @@
+public class FrogSim
+{
+    
+    private int maxHops;
+    private int goalDistance;
+    private int simsNum;
+    
+    public FrogSim(int m, int gd)
+    {
+        maxHops = m;
+        goalDistance = gd;
+    }
+    
+    // gives the distance for each jump
+    public double hopDistance()
+    {
+        
+        double min = -10;
+        double max = 10;
+        double range = max-min+1;
+        double distance = (Math.random()*range)+min;
+        return distance;
+    }
+    
+    // simulates frog simulation
+    public boolean simulate()
+    {
+        int distance = 0;
+        for (int i = 0; i<maxHops; i++)
+        {
+            distance+=hopDistance();               
+            System.out.println("Distance is: " + distance);
+            if (distance>=goalDistance)
+            {
+                System.out.println("The frog Made it! :)");
+                return true;
+            }
+        }
+        System.out.println("The frog didn't make it :(");
+        return false;
+    }
+    
+}
